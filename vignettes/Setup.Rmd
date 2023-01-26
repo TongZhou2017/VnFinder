@@ -1,0 +1,72 @@
+---
+title: "Setup"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Setup}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Before EVERYTHING, we should setup hmmer3 first.
+
+## Install HMMER
+
+Download source package of HMMER from [offical website](http://hmmer.org/)
+
+The source package usually named `hmmer.tar.gz` for Unix/MacOS.
+
+Following installation section of the [guideline](http://eddylab.org/software/hmmer/Userguide.pdf), using the following command to 
+
+install hmmer3:
+
+```{bash eval=FALSE, include=TRUE}
+tar xf hmmer.tar.gz
+cd hmmer-3.3.2
+./configure
+make
+make install
+# for mac M1 user https://github.com/EddyRivasLab/hmmer/issues/283
+# arch -x86_64 ./configure
+# arch -x86_64 make
+# arch -x86_64 make install
+# source or reopen terminal to active .bash_profile
+```
+
+Check the utils location by the following command:
+```{bash eval=FALSE, include=TRUE}
+where nhmmscan
+#> /usr/local/bin/nhmmscan
+```
+
+Set the path into .Options
+```{r eval=FALSE, include=TRUE}
+options(hmmer.path = '/usr/local/bin/')
+getOption("hmmer.path")
+```
+
+## Install usearch
+Download 32-bit or 64-bit usearch locally. If using MacOS M1 platform, should 
+
+open a Linux environment by docker first.
+```{bash eval=FALSE, include=TRUE}
+# open a container without stopping and name as usearch
+docker run -d -i --name usearch ~/Downloads/docker_volumn:/mnt -t ubuntu
+# copy 64-bit usearch from host to Docker container
+sudo docker cp ~/Downloads/usearch11.0.667_i86linux64 usearch:/bin/usearch
+# run usearch example
+docker ps -aqf 'name=usearch' | xargs -I {} docker exec -i {} /bin/sh -c '/bin/usearch -fastx_get_sample_names /mnt/Octocarol.fa -output /mnt/Octocarol_samples.txt'
+```
+
+Set the path into .Options
+```{r eval=FALSE, include=TRUE}
+options(usearch.path = "docker ps -aqf 'name=usearch' | xargs -I {} docker exec -i {} /bin/sh -c '/bin/")
+getOption("usearch.path")
+```
+
