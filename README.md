@@ -1,13 +1,7 @@
 # VnFinder
- extract hypervariable regions of ribosomal RNA gene of eukaryota 
 
+extract hypervariable regions of ribosomal RNA gene of eukaryota
 
-## Features
+## Documents
 
-do
-- hmmer wrapper
-- usearch wrapper
-
-will do
-
-not do
+[ISC workflow[ToReplace]](/Users/zhoutong/Documents/GitHub/VnFinder/vignettes/Setup.Rmd)

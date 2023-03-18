@@ -1,15 +1,30 @@
 Package: VnFinder
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Extract Hypervariable Regions of Ribosomal RNA Gene of Eukaryota
 Version: 0.1.0
-Author: Who wrote it
+Authors@R: 
+    person(
+    given = "Tong",
+    family = "Zhou",
+    role = c("aut", "cre"),
+    email = "tongzhou2017@gmail.com"
+  )
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+RoxygenNote: 7.2.3
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+Imports: 
+    dplyr,
+    itol.toolkit,
+    stringr
